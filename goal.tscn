@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://cgoal1234xy0"]
+
+[ext_resource type="Script" uid="uid://dx7g8s3pqmn1" path="res://goal.gd" id="1_goal"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_post"]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_post"]
+size = Vector2(18, 100)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_zone"]
+size = Vector2(314, 100)
+
+[node name="Goal" type="Node2D"]
+script = ExtResource("1_goal")
+
+[node name="LeftPost" type="StaticBody2D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_post")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftPost"]
+position = Vector2(404, 70)
+shape = SubResource("RectangleShape2D_post")
+
+[node name="RightPost" type="StaticBody2D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_post")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightPost"]
+position = Vector2(786, 70)
+shape = SubResource("RectangleShape2D_post")
+
+[node name="ScoreZone" type="Area2D" parent="."]
+monitoring = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScoreZone"]
+position = Vector2(595, 70)
+shape = SubResource("RectangleShape2D_zone")

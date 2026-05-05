@@ -1,0 +1,87 @@
+[gd_scene load_steps=10 format=3 uid="uid://by808577yketb"]
+
+[ext_resource type="PackedScene" uid="uid://pw7lroo0n1g3" path="res://ball.tscn" id="1_qdtjo"]
+[ext_resource type="PackedScene" uid="uid://dyvwimrl7ufpr" path="res://paddle.tscn" id="2_g8f2q"]
+[ext_resource type="PackedScene" uid="uid://dilv6irhevu5h" path="res://wall.tscn" id="3_coxuf"]
+[ext_resource type="Script" uid="uid://bm5xy63jhqv4t" path="res://game.gd" id="4_game"]
+[ext_resource type="PackedScene" uid="uid://cgoal1234xy0" path="res://goal.tscn" id="5_goal"]
+[ext_resource type="Script" uid="uid://confetti12345" path="res://confetti.gd" id="6_confetti"]
+[ext_resource type="Script" uid="uid://cobstmgrgd001" path="res://obstacle_manager.gd" id="7_omgr"]
+[ext_resource type="Script" uid="uid://bgmgdscript01" path="res://bgm.gd" id="8_bgm"]
+[ext_resource type="Script" uid="uid://clifedsplay01" path="res://life_display.gd" id="9_ldisp"]
+
+[node name="Game" type="Node2D"]
+position = Vector2(1, 2)
+script = ExtResource("4_game")
+
+[node name="BGM" type="Node" parent="."]
+script = ExtResource("8_bgm")
+
+[node name="Background" type="ColorRect" parent="."]
+color = Color(0.2, 0.6, 0.2, 1)
+size = Vector2(1190, 980)
+
+[node name="Wall" parent="." instance=ExtResource("3_coxuf")]
+
+[node name="Goal" parent="." instance=ExtResource("5_goal")]
+
+[node name="ObstacleManager" type="Node2D" parent="."]
+script = ExtResource("7_omgr")
+
+[node name="Paddle" parent="." instance=ExtResource("2_g8f2q")]
+position = Vector2(549, 915)
+
+[node name="Ball" parent="." instance=ExtResource("1_qdtjo")]
+position = Vector2(549, 896)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="LifeDisplay" type="Node2D" parent="CanvasLayer"]
+script = ExtResource("9_ldisp")
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer"]
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -380.0
+offset_right = -10.0
+offset_top = 15.0
+offset_bottom = 60.0
+horizontal_alignment = 2
+text = "SCORE: 0"
+theme_override_font_sizes/font_size = 36
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+
+[node name="GoalFlash" type="Label" parent="CanvasLayer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+vertical_alignment = 1
+horizontal_alignment = 1
+text = "GOAL!"
+theme_override_font_sizes/font_size = 100
+theme_override_colors/font_color = Color(1, 0.85, 0.05, 1)
+
+[node name="Confetti" type="Node2D" parent="CanvasLayer"]
+script = ExtResource("6_confetti")
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/CenterContainer"]
+alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/CenterContainer/VBoxContainer"]
+text = "ゲームオーバー"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 48
+
+[node name="RestartButton" type="Button" parent="CanvasLayer/CenterContainer/VBoxContainer"]
+text = "再スタート"
+
+[connection signal="pressed" from="CanvasLayer/CenterContainer/VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]

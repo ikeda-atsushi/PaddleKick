@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cbp5m550x05jm"
+path="res://.godot/imported/Retro Soccer Synthwave Loop.mp3-861ec3da540fd3f3821cf6f10c9f6dfb.mp3str"
+
+[deps]
+
+source_file="res://sound/Retro Soccer Synthwave Loop.mp3"
+dest_files=["res://.godot/imported/Retro Soccer Synthwave Loop.mp3-861ec3da540fd3f3821cf6f10c9f6dfb.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
