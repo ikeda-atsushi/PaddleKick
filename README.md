@@ -2,6 +2,8 @@
 
 A 2D soccer goal game built with Godot 4.6. Control a paddle to deflect the ball into the goal.
 
+![Gameplay](screenshots/gameplay.png)
+
 ## Gameplay
 
 - A ball bounces around the screen
