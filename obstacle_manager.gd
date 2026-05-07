@@ -37,7 +37,8 @@ func _spawn() -> void:
 	var d   := 1 if randf() > 0.5 else -1
 	var spd := randf_range(SPAWN_SPD_MIN, SPAWN_SPD_MAX)
 	var y   := randf_range(SPAWN_Y_MIN, SPAWN_Y_MAX)
-	var t   := randi() % 6
+	const TYPES := [0, 2, 3, 4, 5]
+	var t: int = TYPES[randi() % TYPES.size()]
 	var ob: AnimatableBody2D = OBSTACLE_SCENE.instantiate()
 	# position を add_child より前に設定することで、(0,0) = ゴール付近への一瞬の描画を防ぐ
 	ob.position = Vector2(SPAWN_X_LEFT if d == 1 else SPAWN_X_RIGHT, y)

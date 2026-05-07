@@ -64,6 +64,19 @@ text = "GOAL!"
 theme_override_font_sizes/font_size = 100
 theme_override_colors/font_color = Color(1, 0.85, 0.05, 1)
 
+[node name="PauseLabel" type="Label" parent="CanvasLayer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+vertical_alignment = 1
+horizontal_alignment = 1
+text = "PAUSE"
+theme_override_font_sizes/font_size = 80
+theme_override_colors/font_color = Color(1, 1, 1, 0.85)
+
 [node name="Confetti" type="Node2D" parent="CanvasLayer"]
 script = ExtResource("6_confetti")
 

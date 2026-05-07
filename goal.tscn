@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cgoal1234xy0"]
 
 [ext_resource type="Script" uid="uid://dx7g8s3pqmn1" path="res://goal.gd" id="1_goal"]
+[ext_resource type="Script" path="res://goalkeeper.gd" id="2_gk"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_post"]
 friction = 0.0
@@ -11,6 +12,9 @@ size = Vector2(18, 100)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_zone"]
 size = Vector2(314, 100)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gk"]
+size = Vector2(64, 20)
 
 [node name="Goal" type="Node2D"]
 script = ExtResource("1_goal")
@@ -35,3 +39,11 @@ monitoring = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ScoreZone"]
 position = Vector2(595, 70)
 shape = SubResource("RectangleShape2D_zone")
+
+[node name="Goalkeeper" type="AnimatableBody2D" parent="."]
+process_mode = 3
+position = Vector2(595, 240)
+script = ExtResource("2_gk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Goalkeeper"]
+shape = SubResource("RectangleShape2D_gk")

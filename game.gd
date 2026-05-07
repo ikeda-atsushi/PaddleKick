@@ -9,6 +9,7 @@ var _resetting := false
 func _ready() -> void:
 	$CanvasLayer/CenterContainer.hide()
 	$CanvasLayer/GoalFlash.hide()
+	$CanvasLayer/PauseLabel.hide()
 	$CanvasLayer/ScoreLabel.text = "SCORE: " + str(persistent_score)
 	$CanvasLayer/LifeDisplay.set_lives(_lives)
 	$Ball.game_over.connect(_on_game_over)
@@ -16,6 +17,12 @@ func _ready() -> void:
 	$ObstacleManager.bonus_scored.connect(_on_bonus_scored)
 	if persistent_score >= 1:
 		$ObstacleManager.enable()
+	process_mode = Node.PROCESS_MODE_ALWAYS
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventKey and event.keycode == KEY_P and event.pressed and not event.echo:
+		get_tree().paused = not get_tree().paused
+		$CanvasLayer/PauseLabel.visible = get_tree().paused
 
 func _on_goal_scored() -> void:
 	if _goal_pending:
