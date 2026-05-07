@@ -3,6 +3,13 @@
 /android/
 .nomedia
 
+# MCP
+.mcp.json
+addons/godot_mcp/
+
+# Godot import metadata
+*.png.import
+
 # Godot-specific ignores
 .import/
 export.cfg
