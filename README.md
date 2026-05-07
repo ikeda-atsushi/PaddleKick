@@ -17,6 +17,9 @@ A 2D soccer goal game built with Godot 4.6. Control a paddle to deflect the ball
 |-------|--------|
 | `←` / `A` | Move paddle left |
 | `→` / `D` | Move paddle right |
+| Hold `T` + ball hits paddle front | Trap the ball on the paddle |
+| Release `T` | Launch trapped ball at full speed |
+| `P` | Pause / Resume |
 
 ## Scoring
 
@@ -33,12 +36,15 @@ After scoring the first goal, characters begin crossing the screen from the side
 | Character | Uniform | Effect |
 |-----------|---------|--------|
 | UFO | — | Destroyed by the ball for +300 points |
-| GK (Goalkeeper) | Yellow-green | Deflects the ball |
 | FW (Forward) | Red | Deflects the ball |
 | MF (Midfielder) | Blue | Deflects the ball |
 | DF (Defender) | White | Deflects the ball |
 | Referee | Black | Deflects the ball |
 | Captain | Orange | Deflects the ball |
+
+## Goalkeeper
+
+A goalkeeper (yellow-green uniform) patrols in front of the goal, moving to random positions within the goal width at random intervals. Use the trap feature to aim past the goalkeeper.
 
 All characters are drawn entirely in code — no external sprite assets.
 
